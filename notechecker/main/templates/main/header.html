@@ -1,0 +1,25 @@
+<head>
+	{% load static %}
+		<link href="{% static "css/materialize.min.css" %}" rel="stylesheet">
+		<!--Import Google Icon Font-->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+		<!--Tell browser site is optimized for mobile-->
+		<meta name="vieport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+	<!--Nav Bar-->
+	<nav class="nav-wrapper deep-purple darken-2">
+			<div class="nav-wrapper">
+				<a href="http://127.0.0.1:8000/" class="brand-logo center">Tonus</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="/notes">Notes</a></li>
+					<li><a href="/chords">Chords</a></li>
+				</ul>
+			</div>
+		</nav>
+	{% block content %}
+	{% endblock %}
+</body>
+<!--JS at end for optimized loading-->
+<script type="text/javascript" src="{% static "js/materialize.min.js" %}"></script>

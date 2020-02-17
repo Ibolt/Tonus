@@ -1,0 +1,29 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+<head>
+	<title>Tonus</title>
+</head>
+<body>
+	<div class="section no-pad-bot" id="index-banner">
+		<div class="container">
+			<h1 class="header center deep-purple-text">Tonus</h1>
+
+			<div class="row center">
+				<h5 class="header col s12 light deep-purple-text text-lighten-2">Machine learning driven music analysis</h5>
+			</div>
+		</div>
+	</div>
+
+	<div style="text-align: center;">
+		<div style="display: inline-block;">
+			<a class="waves-effect waves-light btn deep-purple lighten-1" href="http://127.0.0.1:8000/notes/">Detect Notes</a>
+		</div>
+		<div style="display: inline-block;">
+				<a class="waves-effect waves-light btn deep-purple lighten-1" href="http://127.0.0.1:8000/chords/">Detect Chords</a>
+		</div>
+	</div>
+
+	</div>
+</body>
+{% endblock %}

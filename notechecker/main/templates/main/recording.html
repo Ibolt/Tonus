@@ -1,0 +1,65 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+<body>
+	<div style="padding-top: 20px;" class="row center">
+		<h5 id="title" class="header col s12 light deep-purple-text text-lighten-2">Identify Chords in your music.</h5>
+	</div>
+	<div style="text-align: center;">
+		<div style="display: inline-block;">
+
+			<button id="record_bt" class="waves-effect waves-light btn deep-purple lighten-1">Record Again</button>
+
+		</div>
+	</div>
+	<div style="text-align: center; padding-top: 30px">
+		<div id="prog_bar" class="progress deep-purple" style="width: 300px; display: none;">
+			<div class="indeterminate yellow"></div>
+		</div>
+	</div>
+	<script>
+		function sleep(ms) {
+		  return new Promise(resolve => setTimeout(resolve, ms));
+		}
+
+		document.getElementById("record_bt").onclick = async function process() {
+			window.location.reload();
+
+			document.getElementById("title").innerHTML = "Recording...";
+
+			document.getElementById("prog_bar").style.display = "inline-block";
+
+			await sleep(3000);
+
+			document.getElementById("title").innerHTML = "Processing...";
+		}
+	</script>
+	<!--If the list isn't empty-->
+	{% if chordsList %}
+		<!--Hide Progress bar-->
+		<script>
+			document.getElementById("prog_bar").style.display = "none";
+		</script>
+		<table style="padding-top: 30px;" class="striped responsive">
+			<tr>
+				<th>Chords</th>
+			</tr>
+			<tr>
+				<td>The model predicted the chord to be <strong><em>{{chordsList.0}}</em></strong> with a confidence of <strong><em>{{chordsList.1}}</em></strong></td>
+			</tr>
+			<tr>
+				<th>Chord Diagram</th>
+			</tr>
+			<tr>
+				{% if chordsList.0 == 'C'%}
+					<td><img style="object-fit: contain; height: 375px; width: 312px;" src="http://www.chordbank.com/media/c-chord.jpg"></td>
+				{% elif chordsList.0 == 'G' %}
+					<td><img style="object-fit: contain; height: 375px; width: 312px;" src="https://www.chordbank.com/media/g-chord.jpg"></td>
+				{% elif chordsList.0 == 'E'%}
+					<td><img style="object-fit: contain; height: 375px; width: 312px;" src="https://i.imgur.com/Lh1TgUG.jpg"></td>
+				{% endif %}
+			</tr>
+		</table>
+	{% endif %}
+</body>
+{% endblock %}

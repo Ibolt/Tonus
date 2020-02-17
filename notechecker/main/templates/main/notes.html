@@ -1,0 +1,70 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+<body>
+	<div class="row center">
+		<h5 id="title" class="header col s12 light deep-purple-text text-lighten-2">Identify Notes in your music. Upload a wav file to get started.</h5>
+	</div>
+	<br>
+
+	<div style="text-align: center;">
+		<div style="display: inline-block;">
+			<form method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+				<div class="row center file-field input-field">
+					<div class="row center btn waves-effect waves-light deep-purple lighten-1" style="text-align:center;">
+						<span>Choose a File</span>
+						<input id ="uploadFile" type="file" name="document">
+					</div>
+				</div>
+			<button id="submit_button" class="btn waves-effect waves-light deep-purple lighten-1" type="submit">Upload File</button>
+			<!--Check if the user has selected a file for upload-->
+			<script>
+				console.log(window.location.pathname);
+
+				document.getElementById("submit_button").onclick = function() {
+					document.getElementById("title").innerHTML = "Uploading and processing file...";
+
+					document.getElementById("prog_bar").style.display = "inline-block";
+				}
+			</script>
+			</form>
+			<div id="prog_bar" class="progress" style="display: none;">
+		      <div class="indeterminate deep-purple"></div>
+		  </div>
+		</div>
+	</div>
+		<br>
+	</div>
+</div>
+			
+		</div>
+		<br>
+		<br>
+		<!--If the list isn't empty-->
+		{% if notesList %}
+			<!--Hide Progress bar-->
+			<script>
+				document.getElementById("prog_bar").style.display = "none";
+			</script>
+					<table class="striped responsive">
+			<tr>
+				<th>Notes</th>
+			</tr>
+			<tr>
+				{% for note in notesList %}
+					<td>{{note}}</td>
+				{% endfor %}
+			</tr>
+			<tr>
+				<th>Tabs</th>
+			</tr>
+			{% for tabLine in tabs %}
+				<tr>
+					<td>{{tabLine.0}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+		{% endif %}
+</body>
+{% endblock %}
