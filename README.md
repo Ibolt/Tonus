@@ -11,10 +11,10 @@ A custom-trained Tensorflow Audio Recognition model is used to analyze audio. Up
 ### Chords Identification
 ![Chords Identification](https://i.imgur.com/I2ecYwY.png)
 
-###Processing Audio File
+### Processing Audio File
 ![Chords Processing](https://i.imgur.com/rQnij1q.png)
 
-###Chord Identification Result
+### Chord Identification Result
 ![Chord Result](https://i.imgur.com/CNYwNuA.png)
 
 ### Notes Identification
